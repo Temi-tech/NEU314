@@ -7,3 +7,6 @@
 #need to add a commit message before you committ
 
 #need to push before it goes into the repository
+
+
+#Change #3
