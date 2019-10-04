@@ -39,6 +39,7 @@ Returns:
     out (red, blue, green): returns values of red, blue, and green channels
 """
 
+#add bug
 function pixels(imagename::AbstractString)
     #https://docs.julialang.org/en/v1/manual/strings/
     image = imread(imagename)
@@ -49,13 +50,14 @@ function pixels(imagename::AbstractString)
     red = image[:,:,1]
     blue = image[:,:,2]
     green = image[:,:,3]
+    println("BUG BUG BUG")
     return (red, blue, green)
 end
 
 pixels("el-capitan.png")
-red
-blue
-green
+red #confirm red
+blue #confirm blue
+green #confirm green
 
 
 ###########################################################################
