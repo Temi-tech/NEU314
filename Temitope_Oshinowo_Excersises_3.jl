@@ -61,3 +61,34 @@ green #confirm green
 
 
 ###########################################################################
+###########################################################################
+
+
+#1.A.e
+#Make a new 360x640x3 matrix; let’s call this image2.
+#https://docs.julialang.org/en/v1/base/arrays/#Core.AbstractArray
+image2 = Array{Float32,2}(undef, 360, 640)
+
+
+#Set image2[:,:,1] to be the G channel from the original image,
+#image2[:,:,2] to be the B channel from the original image, and
+#image2[:,:,3] to be the R channel from the original image.
+
+#https://stackoverflow.com/questions/25561390/declare-and-initialise-3-dimensional-array
+image2 = zeros(360,640,3) #add "0" to all slots in image2 array
+image2[:,:,1] = green #set matrix 1 to correspond to G from original image
+image2[:,:,2] = blue #set matrix 2 to correspond to B from original image
+image2[:,:,3] = red #set matrix 3 to correspond to R from original image
+
+#Use imshow() to display the original image and image2 side by side (hint: use
+#subplot(1,2,1) to first make a left-hand axis and work with that; and
+#then subplot(1,2,2) to make a right-hand axis, and work with that).
+#The commands figure(figsize=[x,y]), title("your text goes
+#here"), and axis("off") can be used to initialize a figure specified by
+#x and y (width and height in inches), add a title, and turn off the axis,
+#respectively, for aesthetics. Commit and push both the code and image
+#to your repo.
+figure(figsize=[12,8]), (subplot(1,2,1); #specify dimensions
+imshow(picture); #show original picture in one subplot
+axis("off"); title("Image 1")); (subplot(1,2,2);
+imshow(image2); ; axis("off"); title("Image 2")); #show modified picture in other subplot
