@@ -39,7 +39,6 @@ Returns:
     out (red, blue, green): returns values of red, blue, and green channels
 """
 
-#add bug
 function pixels(imagename::AbstractString)
     #https://docs.julialang.org/en/v1/manual/strings/
     image = imread(imagename)
@@ -50,7 +49,6 @@ function pixels(imagename::AbstractString)
     red = image[:,:,1]
     blue = image[:,:,2]
     green = image[:,:,3]
-    println("BUG BUG BUG")
     return (red, blue, green)
 end
 
@@ -92,3 +90,38 @@ figure(figsize=[12,8]), (subplot(1,2,1); #specify dimensions
 imshow(picture); #show original picture in one subplot
 axis("off"); title("Image 1")); (subplot(1,2,2);
 imshow(image2); ; axis("off"); title("Image 2")); #show modified picture in other subplot
+
+###########################################################################
+###########################################################################
+
+#1.B
+#Write a function that, for given an image, circularly moves only one channel,
+#the red channel (remember, this is the first one) up some number of pixels,
+#p, such that the top p rows now become the bottom p rows. Your function should
+#take two arguments -- 1) your image and 2) the number of pixels you want to
+#shift it by -- and return the shifted image. Display both the original image
+#channel and the result of circularly moving the red channel up by 180 pixels.
+
+"""
+circ_rotation -- Moves red channel of an image up by number of pixels p
+Function takes an image name and number of
+pixels you want to shift by as an argument and outputs the shifted
+image.
+
+Args:
+    img (AbstractString): Take in file name of the image as string
+    p (int): Take in number of pixels to shift red channels by
+Returns:
+    return ((subplot(2,2,1); imshow(imgorig);; axis("off")), (subplot(2,2,2); imshow(img); axis("off")))
+     returns original image and image with red channel circularly shifted by p
+"""
+function circ_rotation(img::AbstractString, p)
+    img = imread(img)
+    imgorig = copy(img)
+    red = imgorig[:,:,1]
+    red2 = circshift(red, p)
+    img[:,:,1] = red2
+    return ((subplot(2,2,1); imshow(imgorig);; axis("off")), (subplot(2,2,2); imshow(img); axis("off"))) #pull from function to rest of code use semicolon in REPL
+end
+
+circ_rotation("el-capitan.png", 180)
